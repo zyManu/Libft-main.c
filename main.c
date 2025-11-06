@@ -1,5 +1,17 @@
 #include "libft.h"
 
+char	mapi_iteri(unsigned int i, char c)
+{
+	(void)i;
+
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	else
+		return (c);
+}
+
 int main(void)
 {
     /*
@@ -48,6 +60,7 @@ int main(void)
 
     */
     
+	printf("\nStarting libft tests...\n\n");
     printf("\n");
 
     // atoi - test
@@ -256,8 +269,24 @@ int main(void)
     printf("\n");
 
     // strmapi - test
+	const char *strmapi_test = "Hello, World!";
+	char *mapped = ft_strmapi(strmapi_test, mapi_iteri);
+	if (mapped)
+	{
+		printf("Mapped string: '%s'\n", mapped);
+		free(mapped);
+	}
+	printf("\n");
 
 	// striteri - test
+	const char *striteri_test = "LoReM iPsUm";
+	char *iteri_mapped = ft_strmapi(striteri_test, mapi_iteri);
+	if (iteri_mapped)
+	{
+		printf("Iteri mapped string: '%s'\n", iteri_mapped);
+		free(iteri_mapped);
+	}
+	printf("\n");
 
     // strncmp - test
     const char *strncmp_s1 = "Hello";
@@ -321,8 +350,9 @@ int main(void)
     char lower2 = 'p';
     char upper2 = ft_toupper(lower2);
     printf("Uppercase of '%c' is '%c'\n", lower2, upper2);
-    printf("\n");
+    printf("\n\n\n");
 
     // end of tests
+	printf("End of libft tests.\n\n");
     return 0;
 }
